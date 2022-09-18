@@ -3,11 +3,24 @@ name = "meatballs-live-services-rust"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "meatballs-live-services-server"
+path = "src/server.rs"
+
+[[bin]]
+name = "meatballs-live-services-client"
+path = "src/client.rs"
+
 [dependencies]
+bytes = "1"
 dotenvy = "0.15.3"
+http = "0.2"
+hyper = { version = "0.14", features = ["full"] }
+hyper-tls = "0.5.0"
+openssl = { version = "0.10", features = ["vendored"] }
 prost = "0.11"
 tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
-tonic = "0.8"
+tonic = "0.8.1"
 tonic-web = "0.4.0"
 
 [build-dependencies]

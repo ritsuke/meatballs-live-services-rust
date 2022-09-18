@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package services;
+
+service Test {
+  rpc Ping (PingRequest) returns (PingReply);
+}
+
+service Story {
+  rpc IngestNewStories (IngestNewStoriesRequest) returns (IngestNewStoriesReply);
+  rpc IngestStoryActivity (IngestStoryActivityRequest) returns (IngestStoryActivityReply);
+  rpc GenerateCollections (GenerateCollectionsRequest) returns (GenerateCollectionsReply);
+}
+
+enum DataSource {
+  HN = 0;
+  REDDIT = 1;
+}
+
+message PingRequest {}
+message PingReply {
+  string message = 1;
+}
+
+message IngestNewStoriesRequest {
+  DataSource data_source = 1;
+  uint32 limit = 2;
+}
+
+message IngestNewStoriesReply {
+  string message = 1;
+}
+
+message IngestStoryActivityRequest {
+  DataSource data_source = 1;
+}
+
+message IngestStoryActivityReply { 
+  string message = 1;
+}
+
+message GenerateCollectionsRequest {
+  string data_key = 1;
+}
+
+message GenerateCollectionsReply { 
+  string message = 1;
+}
